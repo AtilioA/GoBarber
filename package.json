@@ -1,0 +1,21 @@
+{
+  "name": "go-barber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AtilioA/go-barber.git",
+  "author": "AtilioA",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "private": true,
+  "workspaces": [
+    "challenge1"
+  ]
+}
