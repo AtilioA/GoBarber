@@ -6,6 +6,6 @@
     "cross-env": "5.0.5"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon ./src/server.js"
   }
 }
