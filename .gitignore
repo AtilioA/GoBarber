@@ -105,5 +105,4 @@ dist
 
 .vscode/
 intro/
-config/
 tmp/uploads/*

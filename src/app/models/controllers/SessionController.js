@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 
 import authConfig from '../../../config/auth';
 import User from '../User';
-import auth from '../../../config/auth';
 
 class SessionController {
   async store(req, res) {
