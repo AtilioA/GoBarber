@@ -1,5 +1,5 @@
 import Appointment from '../models/Appointment';
-import { startOfHour, parseISO, isBefore, format } from 'date-fns';
+import { startOfHour, parseISO, isBefore, format, subHours } from 'date-fns';
 import * as Yup from 'yup';
 import User from '../models/User';
 import File from '../models/File';
@@ -68,8 +68,6 @@ class AppointmentController {
     }
 
     const hourStart = startOfHour(parseISO(date));
-    console.log(date);
-    console.log(hourStart);
 
     // Check if appointment is set to a past date
     if (isBefore(hourStart, new Date())) {
@@ -78,7 +76,7 @@ class AppointmentController {
         .json({ error: "Appointment can't have past dates" });
     }
 
-    // Check date availability
+    // Check if provider is available for the given date
     const checkExistingAppointment = await Appointment.findOne({
       where: {
         provider_id,
@@ -108,6 +106,40 @@ class AppointmentController {
       user_id: provider_id,
       content: `New appointment for ${user.name} on ${formattedDate}`,
     });
+
+    return res.json(appointment);
+  }
+  async delete(req, res) {
+    const appointment = await Appointment.findByPk(req.params.appointmentId);
+
+    // Preliminary checks regarding appointments
+    if (!appointment) {
+      return res.status(400).json({
+        error: "Appointment doesn't exist",
+      });
+    } else if (appointment.canceled_at) {
+      return res.status(400).json({
+        error: 'Appointment is already canceled',
+      });
+    } else if (appointment.user_id !== req.userId) {
+      return res.status(401).json({
+        error:
+          "You aren't allowed to cancel this appointment (user deleting appointment didn't create it)",
+      });
+    }
+
+    const subtractedHours = subHours(appointment.date, 2);
+
+    // Check if user is cancelling appointment at least 2 hours in the future
+    if (isBefore(subtractedHours, new Date())) {
+      return res.status(401).json({
+        error: 'You can only cancel appointments 2 hours in advance',
+      });
+    }
+
+    // Mark appointment as canceled and save in db
+    appointment.canceled_at = new Date();
+    await appointment.save();
 
     return res.json(appointment);
   }
