@@ -5,10 +5,10 @@ export default {
   port: process.env.MAIL_PORT,
   // secure: process.env.MAIL_SECURE,
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
+    user: process.env.MAIL_USERNAME,
+    pass: process.env.MAIL_PASSWORD,
   },
   default: {
-    from: 'Equipe GoBarber <noreply@gobarber.com>',
+    from: process.env.MAIL_FROM,
   },
 };
