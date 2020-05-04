@@ -52,7 +52,6 @@ class UserController {
         .json({ error: `Validation failed: ${errors['errors']}` });
     });
 
-    console.log(req.userId);
     const { email, oldPassword } = req.body;
 
     const user = await User.findByPk(req.userId);

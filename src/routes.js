@@ -6,7 +6,6 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 
 import authMiddleware from './app/middlewares/auth';
-import loggingMiddleware from './app/middlewares/logging';
 
 import FileController from './app/controllers/FileController';
 
@@ -19,8 +18,6 @@ import NotificationController from './app/controllers/NotificationController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
-
-routes.use(loggingMiddleware);
 
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
