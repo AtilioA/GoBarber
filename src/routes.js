@@ -25,7 +25,8 @@ routes.post('/sessions', SessionController.store);
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);
 
-routes.use(authMiddleware);
+routes.use(authMiddleware); // Routes below need authentication
+
 routes.post('/files', upload.single('file'), FileController.store);
 
 routes.get('/appointments', AppointmentController.index);
