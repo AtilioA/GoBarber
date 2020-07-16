@@ -14,7 +14,7 @@ class App {
   constructor() {
     this.server = express();
 
-    Sentry.init(sentryConfig);
+    // Sentry.init(sentryConfig);
 
     this.server.use;
 
@@ -24,7 +24,7 @@ class App {
   }
 
   middlewares() {
-    this.server.use(Sentry.Handlers.requestHandler());
+    // this.server.use(Sentry.Handlers.requestHandler());
     this.server.use(loggingMiddleware);
     this.server.use(cors());
     this.server.use(express.json());
@@ -36,7 +36,7 @@ class App {
 
   routes() {
     this.server.use(routes);
-    this.server.use(Sentry.Handlers.errorHandler());
+    // this.server.use(Sentry.Handlers.errorHandler());
   }
 
   exceptionHandler() {
