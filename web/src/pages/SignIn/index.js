@@ -1,19 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+
+import { signInRequest, signInSuccess } from '../../store/modules/auth/actions';
 
 import logo from '../../assets/logo.svg';
 import { func } from 'prop-types';
 
 const schema = Yup.object().shape({
   email: Yup.string().email('A valid e-mail is required.').required('E-mail is required.'),
-  password: Yup.string().required('Password is required'),
+  password: Yup.string().required('Password is required.'),
 })
- 
+
 function SignIn() {
-  function handleSubmit(data) {
-    console.log(data)
+  const dispatch = useDispatch();
+
+  function handleSubmit({ email, password }) {
+    dispatch(signInRequest(email, password));
   }
 
   return (
@@ -21,11 +26,11 @@ function SignIn() {
       <img src={logo} alt="GoBarber" />
 
       <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="email" type="email" placeholder="Seu e-mail" />
-        <Input name="password" type="password" placeholder="Sua senha secreta" />
+        <Input name="email" type="email" placeholder="Your e-mail" />
+        <Input name="password" type="password" placeholder="Your secret password" />
 
-        <button type="submit">Acessar</button>
-        <Link to="/register">Criar conta gratuita</Link>
+        <button type="submit">Sign in</button>
+        <Link to="/register">Create free account</Link>
       </Form>
     </>
   );
