@@ -1,6 +1,6 @@
 {
-  "singleQuote": true,
-  "trailingComma": "es5",
+  "singleQuote": true, // Enforce single quotes
+  "trailingComma": "es5", // Enforce trailing comma in the last line in objects, etc
   "semi": true,
   "endOfLine": "auto"
 }
