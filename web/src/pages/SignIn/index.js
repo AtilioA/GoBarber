@@ -10,9 +10,11 @@ import logo from '../../assets/logo.svg';
 import { func } from 'prop-types';
 
 const schema = Yup.object().shape({
-  email: Yup.string().email('A valid e-mail is required.').required('E-mail is required.'),
+  email: Yup.string()
+    .email('A valid e-mail is required.')
+    .required('E-mail is required.'),
   password: Yup.string().required('Password is required.'),
-})
+});
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -27,7 +29,11 @@ function SignIn() {
 
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="email" type="email" placeholder="Your e-mail" />
-        <Input name="password" type="password" placeholder="Your secret password" />
+        <Input
+          name="password"
+          type="password"
+          placeholder="Your secret password"
+        />
 
         <button type="submit">Sign in</button>
         <Link to="/register">Create free account</Link>

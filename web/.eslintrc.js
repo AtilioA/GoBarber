@@ -5,23 +5,17 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'react-app',
     'prettier',
     'prettier/react', // Rules for React
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended', // Rules for React Hooks
+    // 'plugin:react-hooks/recommended', // Rules for React Hooks
   ],
   plugins: ['prettier'],
-  // plugins: ["react", "jsx-a11y", "import", "react-hooks", "prettier"],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2020,
+    ecmaVersion: 2018, // Using ESLint 6.8.0
     sourceType: 'module',
     parser: 'babel-eslint',
   },
@@ -36,9 +30,9 @@ module.exports = {
     'global-require': 'off',
     'react-native/no-raw-text': 'off',
     'no-underscore-dangle': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
+    // 'react-hooks/rules-of-hooks': 'error',
+    // 'react-hooks/exhaustive-deps': 'warn',
+    // 'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
     'import/prefer-default-export': 'off',
     'no-console': ['warn', { allow: ['tron'] }],
   },
