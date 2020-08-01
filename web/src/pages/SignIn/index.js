@@ -29,7 +29,7 @@ function SignIn() {
       <img src={logo} alt="GoBarber" />
 
       <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="email" type="email" placeholder="Your e-mail" />
+        <Input name="email" type="email" placeholder="Your e-mail address" />
         <Input
           name="password"
           type="password"

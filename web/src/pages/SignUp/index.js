@@ -16,7 +16,7 @@ const schema = Yup.object().shape({
 
 function SignUp() {
   const dispatch = useDispatch();
-  
+
   function handleSubmit({ name, email, password }) {
     dispatch(signUpRequest(name, email, password));
   }
@@ -27,7 +27,7 @@ function SignUp() {
 
       <Form  schema={schema} onSubmit={handleSubmit}>
         <Input placeholder="Your name" />
-        <Input type="email" placeholder="Your e-mail" />
+        <Input type="email" placeholder="Your e-mail address" />
         <Input type="password" placeholder="Your secret password" />
 
         <button type="submit">Create account</button>
