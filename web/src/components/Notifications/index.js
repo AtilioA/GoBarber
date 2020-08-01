@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { MdNotifications } from 'react-icons/md';
 import { parseISO, formatDistance } from 'date-fns';
-import pt from 'date-fns/locale/pt-BR'
 
 import { Container, Badge, NotificationList, Scroll, Notification  } from './styles';
 
@@ -26,7 +25,7 @@ function Notifications() {
         timeDistance: formatDistance(
           parseISO(notification.createdAt),
           new Date(),
-          { addSuffix: true, locale: pt }
+          { addSuffix: true }
         ),
       }));
       setNotifications(data);
@@ -61,9 +60,13 @@ function Notifications() {
               <p>{notification.content}</p>
               <time>{notification.timeDistance}</time>
               { !notification.read && (
-              <button type="button" onClick={() => handleMarkAsRead(notification.id)}>Mark as read</button>
+              <button
+              type="button"
+              onClick={() => handleMarkAsRead(notification.id)}
+              >
+                Mark as read
+              </button>
               )}
-              <button type="button" onClick={() => handleMarkAsRead(notification.id)}>Mark as read</button>
             </Notification>
           ))}
         </Scroll>
