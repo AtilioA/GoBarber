@@ -1,37 +1,32 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
-
-import { signInSuccess, signFailure } from './actions';
-
 import api from '../../../services/api';
 import history from '../../../services/history';
+import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
-
     const response = yield call(api.post, 'sessions', {
       email,
       password,
     });
 
-    console.tron.log(response);
-
     const { token, user } = response.data;
 
     if (!user.provider) {
-      toast.error('User is not a provider');
+      toast.error('User is not a provider!');
       return;
     }
 
-    api.defaults.headers['Authorization'] = `Bearer ${token}`;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
     yield put(signInSuccess(token, user));
 
-    history.pushState('/dashboard');
+    history.push('/dashboard');
   } catch (err) {
     toast.error('Authentication has failed. Check your credentials.', err);
     yield put(signFailure());
-    history.pushState('/dashboard');
   }
 }
 
@@ -56,11 +51,9 @@ export function* signUp({ payload }) {
 
 export function setToken({ payload }) {
   if (!payload) return;
-
   const { token } = payload.auth;
-
   if (token) {
-    api.defaults.header.Authorization = `Bearer ${token}`;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
   }
 }
 
