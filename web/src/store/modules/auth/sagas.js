@@ -15,6 +15,8 @@ export function* signIn({ payload }) {
       password,
     });
 
+    console.tron.log(response);
+
     const { token, user } = response.data;
 
     if (!user.provider) {
@@ -27,8 +29,9 @@ export function* signIn({ payload }) {
 
     history.pushState('/dashboard');
   } catch (err) {
-    toast.error('Authentication has failed. Check your credentials.');
+    toast.error('Authentication has failed. Check your credentials.', err);
     yield put(signFailure());
+    history.pushState('/dashboard');
   }
 }
 
@@ -52,7 +55,7 @@ export function* signUp({ payload }) {
 }
 
 export function setToken({ payload }) {
-  if (!payload) return
+  if (!payload) return;
 
   const { token } = payload.auth;
 
