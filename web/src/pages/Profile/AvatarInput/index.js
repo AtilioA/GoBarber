@@ -22,6 +22,7 @@ function AvatarInput() {
     }
 
   }, [ref, registerField]);
+// }, [ref.current]); // eslint-disable-line
 
   async function handleChange(e) {
     const data = new FormData();
@@ -39,7 +40,6 @@ function AvatarInput() {
   return (
     <Container>
       <label htmlFor="avatar">
-        <p>{preview}</p>
         <img src={preview || 'https://api.adorable.io/avatars/50/atilioa@adorable.io.png'} alt="Profile"/>
 
         <input

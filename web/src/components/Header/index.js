@@ -26,7 +26,7 @@ function Header() {
             <strong>{profile.name}</strong>
             <Link to="/profile">My profile</Link>
           </div>
-          <img src={profile.avatar_url || "https://api.adorable.io/avatars/50/atilioa@adorable.io.png"} alt="Your avatar" />
+          <img src={profile.avatar_url} alt="Your avatar" />
         </Profile>
       </aside>
     </Content>

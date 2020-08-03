@@ -72,9 +72,9 @@ class UserController {
     const { id, name, avatar } = await User.findByPk(req.userId, {
       include: [
         {
-          model: 'File',
+          model: File,
           as: 'avatar',
-          atributes: ['id', 'path', 'url'],
+          attributes: ['id', 'path', 'url'],
         },
       ],
     });

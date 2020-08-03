@@ -31,9 +31,9 @@ function Profile() {
 
         <hr />
 
-        <Input name="oldPassword" placeholder="Your current password"/>
-        <Input name="password" placeholder="Your new password"/>
-        <Input name="confirmPassword" placeholder="New password confirmation"/>
+        <Input type="password" name="oldPassword" placeholder="Your current password"/>
+        <Input type="password" name="password" placeholder="Your new password"/>
+        <Input type="password" name="confirmPassword" placeholder="New password confirmation"/>
 
         <button type="submit">Update profile</button>
       </Form>
