@@ -38,7 +38,7 @@ function Notifications() {
   }
 
   async function handleMarkAsRead(id) {
-    await api.put(`notifications/${id}`);
+    await api.put(`notifications/${id}`, { read: true });
 
     setNotifications(
       notifications.map(notification =>

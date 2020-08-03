@@ -52,15 +52,15 @@ export const Profile = styled.div`
 
     a {
       display: block;
-      margin-top: px;
+      margin-top: 2px;
       font-size: 12px;
       color: #999;
     }
   }
 
   img {
-    width: 32px;
     height: 32px;
+    width: 32px;
     border-radius: 50%;
   }
 `;

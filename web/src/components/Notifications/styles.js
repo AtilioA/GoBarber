@@ -22,8 +22,10 @@ export const Badge = styled.button`
         background: #ff892e;
         content: '';
         border-radius: 50%;
+        opacity: 1;
       }
     `}
+    opacity: ${(props) => (props.hasUnread ? 1 : 0.8)}
 `;
 
 export const NotificationList = styled.div`
@@ -36,18 +38,6 @@ export const NotificationList = styled.div`
   padding: 15px 5px;
   display: ${(props) => (props.visible ? 'block' : 'none')};
   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
-  -webkit-transition: opacity 600ms, visibility 600ms;
-  transition: opacity 600ms, visibility 600ms;
-  :hover {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .visible {
-    height: auto;
-    opacity: 1;
-    transition: height 0ms 0ms, opacity 600ms 0ms;
-  }
 
   &::before {
     content: '';
@@ -69,6 +59,7 @@ export const Scroll = styled(PerfectScrollbar)`
 
 export const Notification = styled.div`
   color: #eee;
+  opacity: ${(props) => (props.unread ? 1 : 0.5)};
 
   & + div {
     margin-top: 15px;

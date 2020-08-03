@@ -13,7 +13,7 @@ class AppointmentController {
     const { page = 1 } = req.query;
 
     const appointments = await Appointment.findAll({
-      where: { user_id: req.userId, canceled_at: null },
+      where: { canceled_at: null },
       limit: 20,
       offset: (page - 1) * 20,
       order: ['date'],
@@ -23,6 +23,7 @@ class AppointmentController {
           model: User,
           as: 'provider',
           attributes: ['id', 'name'],
+          where: { id: req.userId }, // Appointment must be assigned to the logged in Provider
           include: [
             {
               model: File,
@@ -106,7 +107,7 @@ class AppointmentController {
 
     await Notification.create({
       user_id: provider_id,
-      content: `New appointment for ${user.name} on ${formattedDate}`,
+      content: `New appointment with ${user.name} on ${formattedDate}`,
     });
 
     return res.json(appointment);
