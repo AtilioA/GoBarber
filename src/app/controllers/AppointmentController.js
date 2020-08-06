@@ -1,3 +1,5 @@
+require('dotenv/config');
+
 import Appointment from '../models/Appointment';
 import { startOfHour, parseISO, isBefore, format, subHours } from 'date-fns';
 import * as Yup from 'yup';
@@ -7,6 +9,7 @@ import Notification from '../models/Notification';
 
 import Queue from '../../lib/Queue';
 import MailCancellation from '../jobs/MailCancellation';
+import Mail from '../../lib/Mail';
 
 class AppointmentController {
   async index(req, res) {
@@ -151,6 +154,28 @@ class AppointmentController {
     // Mark appointment as canceled and save in db
     appointment.canceled_at = new Date();
     await appointment.save();
+
+    console.log('ovo manda email');
+
+    for (let i = 0; i < 10; i++) {
+      try {
+        await Mail.sendMail({
+          from: process.env.MAIL_USERNAME,
+          to: `${appointment.provider.name} <${appointment.provider.email}>`,
+          subject: 'Appointment cancellation',
+          template: 'appointment-cancellation',
+          context: {
+            provider: 'fds',
+            user: 'fds',
+            date: undefined,
+          },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    console.log('mandei??');
 
     await Queue.add(MailCancellation.key, {
       appointment,

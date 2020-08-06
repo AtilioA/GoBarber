@@ -84,8 +84,6 @@ A typical request would be a simple `GET` request to the `/providers` endpoint. 
 ]
 ```
 
-
-
 # 🏡 Running locally
 
 ## Back-end
@@ -102,7 +100,7 @@ A typical request would be a simple `GET` request to the `/providers` endpoint. 
 3. Rename the `.env.example` file to `.env`. You can change some values if you want, just keep it consistent throughout the application. Some notes:
 
     * The default port is 3333. You might want to change this if this port is already in use on your system.
-    * You could change JWT_SECRET to another string you desire. It is used by the hashing algorithm for the passwords.
+    * You could change JWT_SECRET to another string you desire. It is used by the hashing algorithm when handling passwords.
     * Since this application was not developed with actual production usage in mind, mailtrap.io was used as a fake SMTP server. Replace the variables entries with your own mailtrap credentials or set up another service.
     * Sentry was added for learning purposes only; feel free to leave the string empty.
 

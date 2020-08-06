@@ -12,6 +12,7 @@ class MailCancellation {
     const { appointment } = data;
 
     await Mail.sendMail({
+      from: 'esprait3@gmail.com',
       to: `${appointment.provider.name} <${appointment.provider.email}>`,
       subject: 'Appointment cancellation',
       template: 'appointment-cancellation',
@@ -24,6 +25,7 @@ class MailCancellation {
         ),
       },
     });
+    console.log('Sent e-mail');
   }
 }
 
