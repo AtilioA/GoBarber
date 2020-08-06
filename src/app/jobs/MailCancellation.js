@@ -16,7 +16,7 @@ class MailCancellation {
       subject: 'Appointment cancellation',
       template: 'appointment-cancellation',
       context: {
-        provider: appointment.provider.name,
+        provider: appointment.provider['name'],
         user: appointment.user.name,
         date: format(
           parseISO(appointment.date),
@@ -24,6 +24,10 @@ class MailCancellation {
         ),
       },
     });
+
+    console.log(
+      `Appointment cancellation email sent to '${appointment.provider.email}'.`
+    );
   }
 }
 

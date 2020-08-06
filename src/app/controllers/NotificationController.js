@@ -42,7 +42,7 @@ class NotificationController {
     });
 
     const { read, content } = req.body;
-    console.log(read, content)
+    console.log(read, content);
 
     console.log(req.params.notificationId);
     const notification = await Notification.findByPk(req.params.notificationId);

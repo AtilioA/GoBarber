@@ -6,7 +6,8 @@
   "author": "AtilioA",
   "license": "MIT",
   "scripts": {
-    "up": "sudo docker start gobarber-db redis-gobarber && yarn dev",
+    "start": "yarn up && yarn dev & yarn queue & cd web && yarn start",
+    "up": "sudo docker start gobarber-db redis-gobarber",
     "dev": "nodemon ./src/server.js",
     "queue": "nodemon ./src/queue.js",
     "dev:debug": "nodemon --inspect ./src/server.js"
