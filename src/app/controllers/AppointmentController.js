@@ -7,7 +7,6 @@ import Notification from '../models/Notification';
 
 import Queue from '../../lib/Queue';
 import MailCancellation from '../jobs/MailCancellation';
-import Mail from '../../lib/Mail';
 
 class AppointmentController {
   async index(req, res) {
