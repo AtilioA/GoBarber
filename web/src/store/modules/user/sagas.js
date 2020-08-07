@@ -21,7 +21,7 @@ export function* updateProfile({ payload }) {
     toast.success('Your profile has been updated!');
   } catch (err) {
     toast.error('Update has failed. Check your credentials.');
-    console.log(err);
+    console.tron.log(err);
     yield put(updateProfileFailure());
   }
 }

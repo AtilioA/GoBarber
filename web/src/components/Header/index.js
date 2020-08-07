@@ -27,12 +27,13 @@ export default function Header() {
                      <strong>{profile.name}</strong>
                      <Link to="/profile">My profile</Link>
                   </div>
+                  <Link to="/profile">
                   <img
                      src={
-                        profile.avatar && profile.avatar.url
+                        profile.avatar && profile.avatar.url || "https://api.adorable.io/avatars/285/gobarber@adorable.io"
                      }
-                     alt={profile.name}
-                  />
+                     alt={profile.name}/>
+                  </Link>
                </Profile>
             </aside>
          </Content>

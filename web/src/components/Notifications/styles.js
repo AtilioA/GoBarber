@@ -15,12 +15,13 @@ export const Badge = styled.button`
     css`
       &::after {
         position: absolute;
-        right: 0px;
-        top: 1px;
-        width: 8px;
-        height: 8px;
-        background: #ff892e;
+        right: 1px;
+        top: 2px;
+        width: 5px;
+        height: 5px;
+        background: red;
         content: '';
+        border: 2px solid #fff;
         border-radius: 50%;
         opacity: 1;
       }
