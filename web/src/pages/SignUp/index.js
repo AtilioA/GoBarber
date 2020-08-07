@@ -24,11 +24,11 @@ function SignUp() {
   return (
     <>
       <img src={logo} alt="GoBarber" />
-
-      <Form  schema={schema} onSubmit={handleSubmit}>
-        <Input placeholder="Your name" />
-        <Input type="email" placeholder="Your e-mail address" />
-        <Input type="password" placeholder="Your secret password" />
+      
+      <Form schema={schema} onSubmit={handleSubmit}>
+        <Input name="name" placeholder="Your name" />
+        <Input name="email" type="email" placeholder="Your e-mail address" />
+        <Input name="password" type="password" placeholder="Your secret password" />
 
         <button type="submit">Create account</button>
         <Link to="/">Already have an account?</Link>
