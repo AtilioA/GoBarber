@@ -35,7 +35,7 @@ export const Container = styled.div`
 export const Time = styled.li`
   padding: 20px;
   border-radius: 4px;
-  background: ${(props) => (props.past ? '#ddd' : '#fff')};
+  background: ${(props) => (props.past ? '#ccc' : '#fff')};
 
   opacity: ${(props) => (props.available && !props.past ? 0.75 : 0.5)};
   opacity: ${(props) => (!props.available && !props.past ? 1 : 0.75)};

@@ -94,7 +94,7 @@ export default function Dashboard() {
                   <span>
                      {time.appointment
                         ? time.appointment.user.name
-                        : 'Available spot'}
+                        : time.past ? 'Past spot' : 'Available spot'}
                   </span>
                </Time>
             ))}
